@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class Login : MonoBehaviour {
+public class Che : MonoBehaviour {
 
 	public GameObject HomePanal;
 	public GameObject SignInPanal;
@@ -20,13 +20,13 @@ public class Login : MonoBehaviour {
 	public InputField email;
 	public InputField add;
 
-	public InputField UserName;
-	public InputField _password;
+//	public InputField UserName;
+//	public InputField _password;
 	public Text conso;
 
 	private string boo = "0";
 	private string url = "localhost/Andrid/signin.php";	
-	private string url1 = "localhost/Andrid/insert.php";	
+//	private string url1 = "localhost/Andrid/incert.php";	
 	WWWForm form;
 	float t = 4f;
 
@@ -46,27 +46,27 @@ public class Login : MonoBehaviour {
 	{
 		SignInPanal.SetActive (true);
 		HomePanal.SetActive (false);
-		SignUpPanal.SetActive (false);
+		SignUpPanalChemiste.SetActive (false);
 	}
 
-	public void signUp()
-	{
-		mediocor.SetActive (true);
-
-		HomePanal.SetActive (false);
-	}
+//	public void signUp()
+//	{
+//		mediocor.SetActive (true);
+//
+//		HomePanal.SetActive (false);
+//	}
 
 	public void signInChemiste()
 	{
-		SignUpPanalChemiste.SetActive (true);
-		mediocor.SetActive (false);
+//		SignUpPanalChemiste.SetActive (true);
+//		mediocor.SetActive (false);
 		boo = "1";
 	}
 
 	public void signInCustomer()
 	{
-		SignUpPanal.SetActive (true);
-		mediocor.SetActive (false);
+//		SignUpPanal.SetActive (true);
+//		mediocor.SetActive (false);
 		boo = "0";
 	}
 
@@ -77,19 +77,19 @@ public class Login : MonoBehaviour {
 		SignUpPanal.SetActive (false);
 		SignUpPanalChemiste.SetActive (false);
 	}
-	public void SignInSub()
-	{
-		string un = UserName.text.ToString ();
-		string _p = _password.text.ToString ();
-		form = new WWWForm ();
-		form.AddField ("UserName", un);
-		form.AddField ("_password", _p);
-		if (un != null && _p != null)
-		{
-			WWW www = new WWW (url1, form);
-			StartCoroutine (WaitForRequest1 (www));
-		}
-	}
+//	public void SignInSub()
+//	{
+//		string un = UserName.text.ToString ();
+//		string _p = _password.text.ToString ();
+//		form = new WWWForm ();
+//		form.AddField ("UserName", un);
+//		form.AddField ("_password", _p);
+//		if (un != null && _p != null)
+//		{
+//			WWW www = new WWW (url1, form);
+//			StartCoroutine (WaitForRequest1 (www));
+//		}
+//	}
 
 
 	public void Sub()
@@ -131,10 +131,10 @@ public class Login : MonoBehaviour {
 	{
 		yield return www;
 
-			// check for errors
-			if (www.error == null)
-			{
-				//Debug.Log("WWW Ok!: " + www.data);
+		// check for errors
+		if (www.error == null)
+		{
+			//Debug.Log("WWW Ok!: " + www.data);
 			if (www.data == "1") {
 				conso.text = "Sucess";
 				t = 0f;
@@ -158,31 +158,6 @@ public class Login : MonoBehaviour {
 				t = 0f;
 				Debug.Log ("SignUp failed");
 			}
-			}
-			else
-			{
-			conso.text = "WWW Error: " + www.error;
-			t = 0f;
-				Debug.Log("WWW Error: "+ www.error);
-			}    
-	}    
-	IEnumerator WaitForRequest1(WWW www)
-	{
-		yield return www;
-
-		// check for errors
-		if (www.error == null)
-		{
-			Debug.Log("WWW Ok!: " + www.data);
-			if (www.data == "1") 
-			{
-				Application.LoadLevel (1);
-			}
-			else {
-				conso.text = "Faild to signIn";
-				t = 0f;
-				Debug.Log ("Faild to signIn");
-			}
 		}
 		else
 		{
@@ -191,4 +166,29 @@ public class Login : MonoBehaviour {
 			Debug.Log("WWW Error: "+ www.error);
 		}    
 	}    
+//	IEnumerator WaitForRequest1(WWW www)
+//	{
+//		yield return www;
+//
+//		// check for errors
+//		if (www.error == null)
+//		{
+//			//Debug.Log("WWW Ok!: " + www.data);
+//			if (www.data == "1") 
+//			{
+//				Application.LoadLevel (1);
+//			}
+//			else {
+//				conso.text = "Faild to signIn";
+//				t = 0f;
+//				Debug.Log ("Faild to signIn");
+//			}
+//		}
+//		else
+//		{
+//			conso.text = "WWW Error: " + www.error;
+//			t = 0f;
+//			Debug.Log("WWW Error: "+ www.error);
+//		}    
+//	}    
 }
